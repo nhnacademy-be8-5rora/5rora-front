@@ -7,6 +7,7 @@ import store.aurora.auth.dto.response.UserPwdAndRoleResponse;
 import store.aurora.auth.dto.response.UserUsernameAndRoleResponse;
 import store.aurora.config.security.constants.SecurityConstants;
 import store.aurora.user.dto.request.SignUpRequest;
+import store.aurora.user.dto.request.UserUpdateRequestDto;
 import store.aurora.user.dto.request.VerificationRequest;
 import store.aurora.user.dto.response.UserInfoResponseDto;
 
@@ -53,4 +54,9 @@ public interface UserClient {
     @PatchMapping("/{userId}/last-login")
     void updateLastLogin(@PathVariable String userId,
                          @RequestBody LocalDateTime lastLogin);
+
+    // 회원정보 수정
+    @PutMapping("/{userId}")
+    ResponseEntity<Map<String, String>> updateUser(@PathVariable String userId,
+                                                   @RequestBody UserUpdateRequestDto request);
 }

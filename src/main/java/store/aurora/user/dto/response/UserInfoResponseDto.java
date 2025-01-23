@@ -3,18 +3,21 @@ package store.aurora.user.dto.response;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
+import store.aurora.user.domain.Rank;
 
 import java.time.LocalDate;
+import java.util.List;
 
 @AllArgsConstructor
 @Getter
 @Setter
 public class UserInfoResponseDto {
-    // id, 이름, 생년월일, 전화번호, 이메일, 등급
     private String id;
     private String name;
     private LocalDate birth;
     private String phoneNumber;
     private String email;
-    private String rankName;
+    private LocalDate signUpDate;
+    private Rank rankName;
+    private List<String> roleNames;
 }
