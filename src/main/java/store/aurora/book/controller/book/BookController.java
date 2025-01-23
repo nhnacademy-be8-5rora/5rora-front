@@ -27,7 +27,7 @@ public class BookController {
         return "bookdetail-test";
     }
 
-    @GetMapping("/likes")
+    @GetMapping("/my-like-books")
     public String getLikeBooks(@RequestParam(defaultValue = "1") String pageNum,
                                Model model, HttpServletRequest request) {
         String jwt = JwtUtil.getJwtFromCookie(request);

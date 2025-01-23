@@ -1,5 +1,6 @@
 package store.aurora.feign_client.order;
 
+import feign.Headers;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -10,15 +11,15 @@ import java.util.List;
 @FeignClient(name = "wrapClient", url = "${api.gateway.base-url}" + "/api/order/wrap")
 public interface WrapClient {
 
-    @GetMapping("/get-wrap-list")
+    @GetMapping
     ResponseEntity<List<WrapResponseDTO>> getWrapList();
 
-    @PostMapping("/create-wrap")
-    void createWrap(WrapResponseDTO wrap);
+    @PostMapping
+    void createWrap(@RequestBody WrapResponseDTO wrap);
 
-    @PostMapping("/update-wrap")
+    @PatchMapping
     void updateWrap(@RequestBody WrapResponseDTO wrap);
 
-    @DeleteMapping("/delete-wrap")
-    void deleteWrap(Long id);
+    @DeleteMapping
+    void deleteWrap(@RequestParam Long id);
 }
