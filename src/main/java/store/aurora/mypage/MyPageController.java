@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import store.aurora.feign_client.UserClient;
+import store.aurora.user.dto.request.UserUpdateRequestDto;
 import store.aurora.user.dto.response.UserInfoResponseDto;
 
 import java.util.Map;
@@ -37,8 +38,14 @@ public class MyPageController {
         return processClientRes(response, clientResponse);
     }
 
-    // 회원정보 조회
-
+    // 회원정보 수정 페이지 이동
+    @GetMapping("/modify/{userId}")
+    public String updateUser(@PathVariable String userId,
+                             Model model) {
+        ResponseEntity<UserInfoResponseDto> user = userClient.getUserInfo(userId);
+        model.addAttribute("user", user.getBody());
+        return "mypage/user-modify-form";
+    }
 
     private String processClientRes(HttpServletResponse response, ResponseEntity<Map<String, String>> clientResponse) {
         HttpHeaders headers = clientResponse.getHeaders();
