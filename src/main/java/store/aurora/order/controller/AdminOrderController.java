@@ -34,19 +34,19 @@ public class AdminOrderController {
         return "admin/order/admin-order";
     }
 
-    @PostMapping("/shipment-update")
+    @PostMapping
     public String updateShipmentStatus(@RequestParam("order-id") Long orderId,
                                        @RequestParam("shipment-state") String shipmentState){
 
         adminOrderClient.updateShipmentStatus(orderId, shipmentState);
 
-        return "redirect:/admin/order/shipment";
+        return "redirect:/admin/order";
     }
 
     @PostMapping("/refund-confirm")
     public String refundConfirm(@RequestParam("order-id") Long orderId){
         adminOrderClient.resolveRefund(simpleEncryptor.encrypt(String.valueOf(orderId)));
 
-        return "redirect:/admin/order/shipment";
+        return "redirect:/admin/order";
     }
 }
