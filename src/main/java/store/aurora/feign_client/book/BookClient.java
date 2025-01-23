@@ -60,7 +60,7 @@ public interface BookClient {
     @PostMapping("/{book-id}/activate")
     ResponseEntity<Void> activateBook(@PathVariable("book-id") Long bookId);
 
-    @GetMapping("/my-likeBooks")
+    @GetMapping("/my-like-books")
     ResponseEntity<Page<BookSearchResponseDTO>> getLikedBooksByUser(@RequestHeader(value = SecurityConstants.AUTHORIZATION_HEADER, required = false) String jwtToken,
                                                              @RequestParam Long pageNum);
 
