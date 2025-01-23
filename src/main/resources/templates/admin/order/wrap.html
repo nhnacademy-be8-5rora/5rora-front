@@ -36,7 +36,7 @@
 
         <!-- 배송 상태 관리 카드 -->
         <div class="card mb-4">
-            <div class="card-header bg-primary text-white">배송 상태 관리</div>
+            <div class="card-header bg-primary text-white">포장지 관리</div>
             <div class="card-body">
                 <p>포장지 목록을 확인하고 관리할 수 있습니다.</p>
             </div>
@@ -52,6 +52,7 @@
                         <th>포장지 번호</th>
                         <th>포장지 이름</th>
                         <th>포장지 가격</th>
+                        <th>포장지 삭제</th>
                     </tr>
                     </thead>
 
@@ -69,9 +70,32 @@
                                     <button type="submit" class="btn btn-primary mt-2">가격 변경</button>
                                 </form>
                             </td>
+                            <td>
+                                <form th:action="@{/admin/wrap/delete}" method="post">
+                                    <input type="hidden" name="id" th:value="${wrap.id}" />
+                                    <button type="submit" class="btn btn-danger mt-2">삭제</button>
+                                </form>
+                            </td>
                         </tr>
                     </tbody>
                 </table>
+            </div>
+        </div>
+
+        <div class="card mt-4">
+            <div class="card-header bg-dark text-white">포장지 추가</div>
+            <div class="card-body">
+                <form th:action="@{/admin/wrap}" method="post">
+                    <div class="mb-3">
+                        <label for="wrapName" class="form-label">포장지 이름</label>
+                        <input type="text" class="form-control" id="wrapName" name="name" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="wrapAmount" class="form-label">포장지 가격</label>
+                        <input type="number" class="form-control" id="wrapAmount" name="amount" required>
+                    </div>
+                    <button type="submit" class="btn btn-success">포장지 추가</button>
+                </form>
             </div>
         </div>
     </section>
