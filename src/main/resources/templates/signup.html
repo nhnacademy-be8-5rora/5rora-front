@@ -88,56 +88,6 @@
     </section>
 </div>
 
-
-<!--<script>-->
-<!--    // 인증번호 전송-->
-<!--    document.querySelector('#sendCodeButton').addEventListener('click', function(event) {-->
-<!--        event.preventDefault(); // 기본 폼 제출 방지-->
-<!--        const phoneNumber = document.querySelector('#phoneNumber').value;-->
-
-<!--        fetch('http://localhost:8280/api/users/send-verification-code', {-->
-<!--            method: 'POST',-->
-<!--            headers: {-->
-<!--                'Content-Type': 'application/json',-->
-<!--            },-->
-<!--            body: JSON.stringify({ phoneNumber }),-->
-<!--        })-->
-<!--            .then(response => response.json())-->
-<!--            .then(data => {-->
-<!--                alert(data.message);-->
-<!--            })-->
-<!--            .catch(error => {-->
-<!--                console.error('Error:', error);-->
-<!--            });-->
-<!--    });-->
-
-<!--    // 인증번호 검증-->
-<!--    document.querySelector('#verifyCodeButton').addEventListener('click', function(event) {-->
-<!--        event.preventDefault();-->
-<!--        const phoneNumber = document.querySelector('#phoneNumber').value;-->
-<!--        const verificationCode = document.querySelector('#verificationCode').value;-->
-
-<!--        fetch('http://localhost:8280/api/users/verify-code', {-->
-<!--            method: 'POST',-->
-<!--            headers: {-->
-<!--                'Content-Type': 'application/json',-->
-<!--            },-->
-<!--            body: JSON.stringify({ phoneNumber, verificationCode }),-->
-<!--        })-->
-<!--            .then(response => response.json())-->
-<!--            .then(data => {-->
-<!--                if (data.message === "인증이 완료되었습니다.") {-->
-<!--                    alert("인증 완료!");-->
-<!--                } else {-->
-<!--                    alert("인증 실패: " + data.message);-->
-<!--                }-->
-<!--            })-->
-<!--            .catch(error => {-->
-<!--                console.error('Error:', error);-->
-<!--            });-->
-<!--    });-->
-<!--</script>-->
-
 </body>
 
 </html>

@@ -9,7 +9,7 @@
 <div th:fragment="sidebar">
     <div class="section-box mb-4 card w-80">
         <div class="card-body rounded text-center" style="background-color: #F3F2EC">
-            <img src="https://via.placeholder.com/80" alt="User Profile" class="rounded-circle my-2"><br>
+            <img src="/static/images/user-profile.png" alt="User Profile" class="rounded-circle my-2" width="100" height="100"><br>
             <span id="user-id" hidden="hidden" th:attr="data-user-id=${user.id}"></span>
             <span id="user-name" class="fw-bold fs-5" th:text="${user.getName()}">이름</span><span>님</span>
             <span class="badge bg-success" th:text="${user.getRankName()}">등급</span>
@@ -37,9 +37,9 @@
     </ul>
     <span class="px-3">마이 활동</span>
     <ul class="nav flex-column px-3 pb-3">
-        <li class="nav-item">
-            <a class="nav-link py-0" href="#" id="menu-questions"><span>1:1문의내역</span></a>
-        </li>
+<!--        <li class="nav-item">-->
+<!--            <a class="nav-link py-0" href="#" id="menu-questions"><span>1:1문의내역</span></a>-->
+<!--        </li>-->
         <li class="nav-item">
             <a class="nav-link py-0" th:href="@{/review/user/{userId} (userId=${user.id})}" id="menu-reviews"><span>리뷰</span></a>
         </li>
@@ -59,9 +59,6 @@
     </ul>
     <span class="px-3">마이 정보</span>
     <ul class="nav flex-column px-3 pb-3">
-        <li class="nav-item">
-            <a class="nav-link py-0" href="#" id="menu-personal-info"><span>회원정보 수정</span></a>
-        </li>
         <li class="nav-item">
             <a class="nav-link py-0" href="/mypage/addresses" id="menu-address"><span>배송지 관리</span></a>
         </li>
