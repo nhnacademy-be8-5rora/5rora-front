@@ -160,9 +160,6 @@
         document.getElementById('editForm').action = '/review/' + reviewId + '/edit';
 
       });
-      //
-      // const reviewId = document.getElementById("reviewId");
-      // document.getElementById('editForm').action = '/review/' + reviewId.value + '/edit';
 
     });
   </script>
@@ -203,9 +200,11 @@
               <tr th:each="review : ${reviews}">
                 <td>
                   <div class="review">
-                    <img th:src="${review.cover}" alt="도서 이미지">
+                    <a th:href="@{/books/{bookId}(bookId=${review.bookId})}">
+                      <img th:src="${review.cover}" alt="도서 이미지">
+                    </a>
                     <div class="review-info">
-                      <h4 th:text="${review.title}">도서 이름</h4>
+                      <h4><a th:href="@{/books/{bookId}(bookId=${review.bookId})}" th:text="${review.title}">도서 제목</a></h4>
                       <div th:text="${review.author}">저자</div>
                     </div>
                   </div>
@@ -228,7 +227,8 @@
                             data-bs-target="#editModal"
                             th:data-review-id="${review.getId()}"
                             th:data-review-rating="${review.getRating()}"
-                            th:data-review-content="${review.getContent()}">
+                            th:data-review-content="${review.getContent()}"
+                            th:data-review-imgFilePath="${review.getImageFilePath()}">
                       리뷰 수정
                     </button>
                     <!-- 리뷰 수정 모달 시작 -->
@@ -286,7 +286,7 @@
                       </div>
                     </div>
                     <!-- 리뷰 수정 모달 끝 -->
-<!--                    <a th:href="@{/review/{reviewId}(reviewId=${review.id})}" class="btn btn-primary btn-sm">리뷰 보기</a>-->
+<!--                    <a th:href="@{/books/{bookId}/{id}(bookId=${review.bookId}, id=${review.getId()})}" class="btn btn-primary btn-sm">리뷰 보기</a>-->
                     <button
                             type="button"
                             class="btn btn-primary btn-sm"
