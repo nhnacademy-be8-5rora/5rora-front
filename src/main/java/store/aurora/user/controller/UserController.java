@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 import store.aurora.feign_client.UserClient;
 import store.aurora.feign_client.coupon.CouponClient;
 import store.aurora.user.dto.request.SignUpRequest;
+import store.aurora.user.dto.request.UserUpdateRequestDto;
 import store.aurora.user.dto.request.VerificationRequest;
 
 import java.util.Map;
@@ -103,6 +104,18 @@ public class UserController {
         ResponseEntity<Map<String, String>> clientResponse = userClient.reactivateUser(userId);
 
         return processClientRes(response, clientResponse);
+    }
+
+    @PostMapping("/modify/{userId}")
+    public String updateUser(@PathVariable String userId,
+                             @ModelAttribute UserUpdateRequestDto request) {
+        ResponseEntity<Map<String, String>> clientResponse = userClient.updateUser(userId, request);
+
+        if (clientResponse.getStatusCode().is2xxSuccessful()) {
+            return "redirect:/mypage";
+        } else {
+            return "redirect:/error";
+        }
     }
 
     private String processClientRes(HttpServletResponse response, ResponseEntity<Map<String, String>> clientResponse) {

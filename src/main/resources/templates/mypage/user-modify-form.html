@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/layout}">
+
+<head>
+    <meta charset="utf-8">
+    <title>회원정보수정</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        th {
+            background-color: #F3F2EC;
+            width: 200px;
+        }
+        input {
+            width: 60%;
+            padding: 10px;
+            margin: 0;
+            box-sizing: border-box;
+        }
+        label {
+            margin: 0;
+        }
+    </style>
+</head>
+
+<body data-bs-spy="scroll" data-bs-target="#header" tabindex="0">
+
+
+<div layout:fragment="content">
+
+    <section id="featured-books" class="my-5">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-10 p-4" id="content-area">
+
+                    <div class="section-header align-center">
+                        <div class="title">
+                            <span></span>
+                        </div>
+                        <h2 class="section-title">회원정보 수정</h2>
+                    </div>
+
+                    <div class="border-bottom border-dark" style="display: flex; justify-content: space-between; align-items: center;">
+                        <span class="fs-4 fw-bold text-dark">기본 정보</span>
+                    </div>
+                    <form th:action="@{/modify/{userId}(userId=${userId})}" method="post">
+                        <table>
+                            <tr>
+                                <th class="ps-3">
+                                    <label for="name">이름</label>
+                                </th>
+                                <td>
+                                    <input type="text" id="name" name="name" th:value="${user.name}" required>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th class="ps-3">
+                                    <label for="phoneNumber">휴대전화번호</label>
+                                </th>
+                                <td>
+                                    <input type="text" id="phoneNumber" name="phoneNumber" th:value="${user.phoneNumber}" required>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th class="ps-3">
+                                    <label for="email">이메일</label>
+                                </th>
+                                <td>
+                                    <input type="email" id="email" name="email" th:value="${user.email}" required>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th class="ps-3">
+                                    <label for="password">비밀번호</label>
+                                </th>
+                                <td>
+                                    <input type="password" id="password" name="password" placeholder="새 비밀번호">
+                                </td>
+                            </tr>
+                        </table>
+                        <button type="submit" class="align-center">수정하기</button>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+
+</div>
+
+</body>
+
+</html>
